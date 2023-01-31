@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Details</title>
+</head>
+<body>
+<form action="saveEmployee" method="post">
+Full Name: <input type="text" name="fullname"><br><br>
+Email:  <input type="email" name="email"><br><br>
+Number: <input type="number" name="number"><br><br>
+Date of Birth: <input type="date" name="dob"><br><br>
+Country : 
+<select name="country" id="country" onchange="updateStates(this.value)">
+  <option value="">Select a country</option>
+  <option value="India">India</option>
+  <option value="Canada">Canada</option>
+  <option value="Australia">Australia</option>
+</select>
+<br><br>
+State:
+<select name="state" id="state">
+  <option value="">Select a state</option>
+</select><br><br>
+
+Professional Skills:
+<input type="checkbox" name="skills" value="Communication">Communication
+<input type="checkbox" name="skills" value="Ability to Work under Pressure">Ability to Work under Pressure<br>
+<input type="checkbox" name="skills" value="Decision Making">Decision Making
+<input type="checkbox" name="skills" value="Time Management">Time Management<br>
+<input type="checkbox" name="skills" value="Self Motivation">Self Motivation
+<input type="checkbox" name="skills" value="Conflict Resolution">Conflict Resolution<br>
+<input type="checkbox" name="skills" value="Leadership">Leadership
+<input type="checkbox" name="skills" value="Adaptability">Adaptability<br>
+
+<button>Save</button>
+
+</form>
+
+
+<script type="text/javascript">
+function updateStates(country) {
+	  var states;
+	  switch (country) {
+	    case "India":
+	      states = ["Karnataka", "TamilNadu", "Telangana"];
+	      break;
+	    case "Canada":
+	      states = ["Alberta", "British Columbia", "Manitoba"];
+	      break;
+	    case "Australia":
+	      states = ["Australian Capital Territory", "New South Wales", "Victoria"];
+	      break;
+	    default:
+	      states = [];
+	  }
+
+	  var stateSelect = document.getElementById("state");
+	  stateSelect.innerHTML = "";
+
+	  for (var i = 0; i < states.length; i++) {
+	    var option = document.createElement("option");
+	    option.value = states[i];
+	    option.text = states[i];
+	    stateSelect.appendChild(option);
+	  }
+	}
+</script>
+</body>
+</html>
