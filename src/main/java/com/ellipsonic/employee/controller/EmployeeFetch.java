@@ -19,8 +19,14 @@ public class EmployeeFetch extends HttpServlet
 protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	EmployeeDao dao=new EmployeeDao();
 	List<Employee> list=dao.fetchAll();
-	
+	if(list.isEmpty())
+	{
+	resp.getWriter().print("<h1>No Data Present </h1>");
+	req.getRequestDispatcher("index.jsp").include(req, resp);	
+	}
+	else {
 	req.getSession().setAttribute("list", list);
 	resp.sendRedirect("fetchall.jsp");
+	}
 }
 }

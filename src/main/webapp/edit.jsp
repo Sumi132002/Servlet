@@ -1,13 +1,23 @@
+<%@page import="com.ellipsonic.employee.dto.Employee"%>
+<%@page import="com.ellipsonic.employee.dao.EmployeeDao"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Employee Details</title>
+<title>Edit</title>
 </head>
 <body>
-	<h1 style="color: red">Enter Employee Details</h1>
+<%
+int id=Integer.parseInt(request.getParameter("id"));
+EmployeeDao dao=new EmployeeDao();
+Employee employee=dao.findEmployee(id);
+%>
+<h1 style="color: red">Enter Updated Employee Details</h1>
 	<br>
 	<form action="saveEmployee" method="post" enctype="multipart/form-data">
+	<input type="text" name="id" value="<%=employee.getId()%>">
 		<table>
 			<tr>
 				<td>Photo:</td>

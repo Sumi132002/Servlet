@@ -1,5 +1,8 @@
 <html>
 <body>
-<h2>Hello World!</h2>
+	<h1>Welcome to Employee Management</h1>
+	<br>
+	<a href="signup.html"><button>Add Employee</button></a>
+	<a href="fetchAll"><button>Fetch Employee</button></a>
 </body>
 </html>

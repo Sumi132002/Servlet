@@ -19,6 +19,16 @@ public class EmployeeDao {
 		manager.persist(employee);
 		transaction.commit();
 	}
+	
+	public void update(Employee employee) {
+		transaction.begin();
+		manager.merge(employee);
+		transaction.commit();
+	}
+	
+	public Employee findEmployee(int id) {
+		return manager.find(Employee.class, id);
+	}
 
 	public List<Employee> fetchAll() {
 		return manager.createQuery("select x from Employee x").getResultList();
